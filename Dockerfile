@@ -16,8 +16,8 @@ ENV LANG="en_US.UTF-8" PATH="${PATH}:/ebook-tools"
 
 USER user
 
-RUN curl 'https://www.mobileread.com/forums/attachment.php?attachmentid=163537' > goodreads.zip && \
-    sha256sum 'goodreads.zip' | grep -q 'c44f88222017aaad0aa1a674e69f46b309198269c7f13ebd671ae942052d45a8' && \
+RUN curl 'https://www.mobileread.com/forums/attachment.php?attachmentid=167618' > goodreads.zip && \
+    sha256sum 'goodreads.zip' | grep -q 'df9630e5dead91e26aaadcb42a5fa975d72fd79d24f2286552de177dd35fefa5' && \
     calibre-customize --add-plugin goodreads.zip && \
     rm goodreads.zip && \
     curl -L 'https://github.com/na--/calibre-worldcat-xisbn-metadata-plugin/archive/0.1.zip' > worldcat.zip && \
