@@ -24,7 +24,6 @@ RUN curl 'https://www.mobileread.com/forums/attachment.php?attachmentid=176347' 
     rm goodreads.zip && \
     curl -L 'https://github.com/na--/calibre-worldcat-xisbn-metadata-plugin/releases/download/0.1/calibre-worldcat-xisbn-metadata-plugin-release-0.1.zip' > worldcat.zip && \
     sha256sum worldcat.zip | grep -q '82bd211f229a7db68c0d022b1ae403c298475978dbcdbea594dc7474ab4e9518' && \
-    7z x worldcat.zip && \
     calibre-customize --add-plugin worldcat.zip && \
     rm -rf worldcat.zip
 
