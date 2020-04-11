@@ -2,8 +2,6 @@ FROM debian:sid-slim
 
 ENTRYPOINT ["bash"]
 
-ENV HOME=/ebook-tools
-
 RUN apt-get update && \
     apt-get --no-install-recommends -y install file less bash coreutils gawk sed grep calibre p7zip-full tesseract-ocr tesseract-ocr-osd tesseract-ocr-eng python-lxml poppler-utils catdoc djvulibre-bin locales curl ca-certificates && \
     rm -rf /var/lib/apt/lists/* && \
@@ -22,8 +20,8 @@ RUN curl 'https://www.mobileread.com/forums/attachment.php?attachmentid=176347' 
     sha256sum 'goodreads.zip' | grep -q '247f4f62b2500af281e166c16bbe851c9a73b13d0b612adf1c390928ba014036' && \
     calibre-customize --add-plugin goodreads.zip && \
     rm goodreads.zip && \
-    curl -L 'https://github.com/na--/calibre-worldcat-xisbn-metadata-plugin/releases/download/0.1/calibre-worldcat-xisbn-metadata-plugin-release-0.1.zip' > worldcat.zip && \
-    sha256sum worldcat.zip | grep -q '82bd211f229a7db68c0d022b1ae403c298475978dbcdbea594dc7474ab4e9518' && \
+    curl -L 'https://github.com/na--/calibre-worldcat-xisbn-metadata-plugin/archive/0.1.zip' > worldcat.zip && \
+    sha256sum worldcat.zip | grep -q 'bedddcd736382baf95fed2c38698ded15b0d8fbd8085bacd1a4b4766e972dd4d' && \
     7z x worldcat.zip && \
     calibre-customize --build-plugin calibre-worldcat-xisbn-metadata-plugin-0.1/ && \
     rm -rf worldcat.zip calibre-worldcat-xisbn-metadata-plugin-0.1
